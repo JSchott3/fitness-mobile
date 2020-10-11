@@ -1,0 +1,22 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-fitnessmobile-dev-235306-authRole",
+            "UnauthRoleArn": "arn:aws:iam::401431860002:role/amplify-fitnessmobile-dev-235306-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::401431860002:role/amplify-fitnessmobile-dev-235306-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-fitnessmobile-dev-235306-deployment",
+            "UnauthRoleName": "amplify-fitnessmobile-dev-235306-unauthRole",
+            "StackName": "amplify-fitnessmobile-dev-235306",
+            "StackId": "arn:aws:cloudformation:us-west-2:401431860002:stack/amplify-fitnessmobile-dev-235306/6b6a6b10-0b8e-11eb-ae00-02e3999fd011",
+            "AmplifyAppId": "dbajfa5w3by06"
+        },
+        "categories": {
+            "auth": {
+                "fitnessmobile68477d30": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            }
+        }
+    }
+}

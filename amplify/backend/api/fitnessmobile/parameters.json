@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "fitnessmobile",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authfitnessmobile68477d30",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
