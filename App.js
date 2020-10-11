@@ -1,13 +1,13 @@
-
-import Amplify from 'aws-amplify';
+import Amplify from '@aws-amplify/core';
+import Auth from '@aws-amplify/auth';
 import config from './aws-exports';
 import React, { useEffect, useState } from 'react'
 import {
   View, Text, StyleSheet, TextInput, Button
 } from 'react-native'
-import { API, graphqlOperation } from 'aws-amplify'
-import { createTodo } from './src/graphql/mutations'
-import { listTodos } from './src/graphql/queries'
+import { Todo } from './src/models';
+import { withAuthenticator } from "aws-amplify-react-native";
+import { DataStore } from 'aws-amplify';
 
 Amplify.configure(config)
 
@@ -18,7 +18,12 @@ const App = () => {
   const [todos, setTodos] = useState([])
 
   useEffect(() => {
-    fetchTodos()
+    DataStore.clear().then(()=>{fetchTodos()});
+    const subscription = DataStore.observe(Todo).subscribe(msg => {
+      console.log(msg);
+      fetchTodos();
+    })
+    console.log(subscription);
   }, [])
 
   function setInput(key, value) {
@@ -27,10 +32,12 @@ const App = () => {
 
   async function fetchTodos() {
     try {
-      const todoData = await API.graphql(graphqlOperation(listTodos))
-      const todos = todoData.data.listTodos.items
+      const todos = await DataStore.query(Todo);
       setTodos(todos)
-    } catch (err) { console.log('error fetching todos') }
+      console.log("Todos retrieved successfully!", JSON.stringify(todos, null, 2));
+    } catch (error) {
+      console.log("Error retrieving todos", error);
+    }
   }
 
   async function addTodo() {
@@ -38,9 +45,10 @@ const App = () => {
       const todo = { ...formState }
       setTodos([...todos, todo])
       setFormState(initialState)
-      await API.graphql(graphqlOperation(createTodo, {input: todo}))
-    } catch (err) {
-      console.log('error creating todo:', err)
+      await DataStore.save(new Todo({...formState}) );
+      console.log("Todo saved successfully!");
+    } catch (error) {
+      console.log("Error saving todo", error);
     }
   }
 
@@ -78,4 +86,4 @@ const styles = StyleSheet.create({
   todoName: { fontSize: 18 }
 })
 
-export default App
+export default withAuthenticator(App);

@@ -18,5 +18,25 @@
                 }
             }
         }
+    },
+    "james": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-fitnessmobile-james-15539-authRole",
+            "UnauthRoleArn": "arn:aws:iam::401431860002:role/amplify-fitnessmobile-james-15539-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::401431860002:role/amplify-fitnessmobile-james-15539-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-fitnessmobile-james-15539-deployment",
+            "UnauthRoleName": "amplify-fitnessmobile-james-15539-unauthRole",
+            "StackName": "amplify-fitnessmobile-james-15539",
+            "StackId": "arn:aws:cloudformation:us-east-1:401431860002:stack/amplify-fitnessmobile-james-15539/8b5f8250-0b9f-11eb-8bae-0a34514375d1",
+            "AmplifyAppId": "d1z4k6ymj47pzy"
+        },
+        "categories": {
+            "auth": {
+                "fitnessmobile68477d30": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            }
+        }
     }
 }
